@@ -6,7 +6,7 @@ from linebot import (
     LineBotApi, WebhookHandler
 )
 
-
+from linebot.models import *
 app = Flask(__name__)
 
 # Channel Access Token

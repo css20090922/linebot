@@ -1,8 +1,8 @@
-from util.py import * as util
+from util.py import *
 
 # 監聽所有來自 /callback 的 Post Request
 
-app = util.app
+app = util.py.app
 
 @app.route("/callback", methods=['POST'])
 def callback():

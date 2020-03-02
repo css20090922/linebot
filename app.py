@@ -1,9 +1,10 @@
+import util 
 
-
-
+app = util.app
+handler =util.handler
 
 # 監聽所有來自 /callback 的 Post Request
-def listen (app):
+
     @app.route("/callback", methods=['POST'])
     def callback():
         # get X-Line-Signature header value

@@ -1,6 +1,6 @@
 from flask import Flask, request, abort
 
-import app.py as apppy 
+import app as apppy 
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -16,6 +16,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('Nwjh3lECegTpMWwZfR2FVFZG4YWdjHb/2IAANyZrtH3a+Vu3+EbXLY+eAm69DyTZZbmiL9A9dpFY0oKao498sDtUOMZdsslsiWYoKa3UTEytkLmsq49Z5jdIs9KrdNZ3TwhlGapC5aWbw/L1NPCj4QdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('ccdcdf6b37f5f796daaec324d1ef6d99')
+
 
 apppy.listen(app)
 apppy.handle(handler)

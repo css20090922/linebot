@@ -1,14 +1,26 @@
-import util 
-from linebot.exceptions import (
-    InvalidSignatureError
+from flask import Flask, request, abort
+from urllib.request import urlopen
+#from oauth2client.service_account import ServiceAccountCredentials
+
+from linebot import (
+    LineBotApi, WebhookHandler
 )
+from linebot.exceptions import (
+    InvalidSignatureError,LineBotApiError
+)
+
+################################
+
 from linebot.models import *
 
-app = util.app
-handler =util.handler
+app = Flask(__name__)
+
+# Channel Access Token
+line_bot_api ='"Nwjh3lECegTpMWwZfR2FVFZG4YWdjHb/2IAANyZrtH3a+Vu3+EbXLY+eAm69DyTZZbmiL9A9dpFY0oKao498sDtUOMZdsslsiWYoKa3UTEytkLmsq49Z5jdIs9KrdNZ3TwhlGapC5aWbw/L1NPCj4QdB04t89/1O/w1cDnyilFU="'
+# Channel Secret
+handler = WebhookHandler('"ccdcdf6b37f5f796daaec324d1ef6d99"')
 
 # 監聽所有來自 /callback 的 Post Request
-
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -39,5 +51,12 @@ def handle_message(event):
         reply_text = "叫我嗎"
     else:
         reply_text = text
-    message = TextSendMessage(text)
+#如果非以上的選項，就會學你說話
+
+    message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
+
+import os
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

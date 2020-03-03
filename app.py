@@ -11,6 +11,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSe
 from utils import send_text_message
 
 load_dotenv()
+print("dotenv\n")
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable

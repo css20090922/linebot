@@ -54,7 +54,7 @@ def handle_message(event):
     text=event.message.text
     
     zhPattern = re.compile(u'[\u4e00-\u9fa5]+')
-    matchChi = zhPattern.search(key)
+    matchChi = zhPattern.search(text)
     if (text=="小幫手"):
         buttons_template = ButtonsTemplate(
             title='我是小幫手', text='想要幹嘛呢', actions=[

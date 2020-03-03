@@ -7,7 +7,7 @@ from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
 
-from utils import send_text_message
+from util import send_text_message
 
 app = Flask(__name__)
 

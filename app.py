@@ -56,14 +56,14 @@ def handle_message(event):
     zhPattern = re.compile(u'[\u4e00-\u9fa5]+')
     matchChi = zhPattern.search(key)
     if (text=="小幫手"):
-           buttons_template = ButtonsTemplate(
+        buttons_template = ButtonsTemplate(
             title='我是小幫手', text='想要幹嘛呢', actions=[
                 PostbackAction(label='每日五字', data='5example'),
                 PostbackAction(label='小測驗', data='exam'),
                 PostbackAction(label='新增單字"', data='add'),
   
             ])
-            template_message = TemplateSendMessage(
+        template_message = TemplateSendMessage(
             alt_text='請用手機看此訊息！', template=buttons_template)
     line_bot_api.reply_message(event.reply_token, buttons_template)
     elif matchChi:

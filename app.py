@@ -68,7 +68,7 @@ def handle_message(event):
     
     elif matchChi:
         reply_text = "是中文"
-    elif word.encode( 'UTF-8' ).isalpha():
+    elif text.encode( 'UTF-8' ).isalpha():
         reply_text = "是英文"
     else:
         reply_text = "亂碼，請重新輸入"

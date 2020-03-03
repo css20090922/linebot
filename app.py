@@ -7,10 +7,9 @@ from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
-from fsm import TocMachine
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
-from textUtil import *
+
 load_dotenv()
 
 app = Flask(__name__)

@@ -6,8 +6,6 @@ from flask import Flask, jsonify, request, abort, send_file
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
-from oauth2client.service_account import ServiceAccountCredentials
-
 
 from utils import send_text_message
 

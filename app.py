@@ -1,19 +1,31 @@
-from flask import Flask, request, abort
+import os
+import sys
+import gspread
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import *
+from flask import Flask, jsonify, request, abort, send_file
+from dotenv import load_dotenv
+from linebot import LineBotApi, WebhookParser
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
+from oauth2client.service_account import ServiceAccountCredentials
+
+
+from utils import send_text_message
 
 app = Flask(__name__)
 
-# Channel Access Token
-line_bot_api = LineBotApi('Nwjh3lECegTpMWwZfR2FVFZG4YWdjHb/2IAANyZrtH3a+Vu3+EbXLY+eAm69DyTZZbmiL9A9dpFY0oKao498sDtUOMZdsslsiWYoKa3UTEytkLmsq49Z5jdIs9KrdNZ3TwhlGapC5aWbw/L1NPCj4QdB04t89/1O/w1cDnyilFU=')
-# Channel Secret
-handler = WebhookHandler('ccdcdf6b37f5f796daaec324d1ef6d99')
+# get channel_secret and channel_access_token from your environment variable
+channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
+channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
+if channel_secret is None:
+    print("Specify LINE_CHANNEL_SECRET as environment variable.")
+    sys.exit(1)
+if channel_access_token is None:
+    print("Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.")
+    sys.exit(1)
+
+line_bot_api = LineBotApi(channel_access_token)
+parser = WebhookParser(channel_secret)
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])

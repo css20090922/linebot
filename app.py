@@ -62,10 +62,10 @@ def handle_message(event):
                 PostbackAction(label='新增單字', data='addVoc',text='新增單字')
                   
             ])
-            template_message = TemplateSendMessage(
-            alt_text='請用手機看此訊息！', template=buttons_template)
-            line_bot_api.reply_message(event.reply_token, buttons_template)
-            print("PostbackAction")
+        template_message = TemplateSendMessage(
+        alt_text='請用手機看此訊息！', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        print("PostbackAction")
         
     if matchChi:
         reply_text = "是中文"

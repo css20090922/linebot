@@ -67,7 +67,7 @@ def handle_message(event):
             alt_text='請用手機看此訊息！', template=buttons_template)
        # line_bot_api.reply_message(event.reply_token,  template_message)
         
-        print("PostbackAction")
+       
         return
     if matchChi:
         reply_text = "是中文"
@@ -82,6 +82,7 @@ def handle_message(event):
 def handle_post_message(event):
 # can not get event text
     print("event =", event)
+    print(event.postback.data)
     line_bot_api.reply_message(
                 event.reply_token,
                 TextMessage(

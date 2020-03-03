@@ -62,19 +62,20 @@ def handle_message(event):
                 PostbackAction(label='新增單字', data='addVoc',text='新增單字')
                   
             ])
-        template_message = TemplateSendMessage(
+    template_message = TemplateSendMessage(
             alt_text='請用手機看此訊息！', template=buttons_template)
-        message = buttons_template
-        print("PostbackAction")
-    elif matchChi:
+    line_bot_api.reply_message(event.reply_token, buttons_template)
+    print("PostbackAction")
+        
+    if matchChi:
         reply_text = "是中文"
     elif text.encode( 'UTF-8' ).isalpha():
         reply_text = "是英文"
     else:
         reply_text = "亂碼，請重新輸入"
-#如果非以上的選項，就會翻譯
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
+    
 
     
 

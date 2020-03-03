@@ -3,12 +3,14 @@ import sys
 
 
 from flask import Flask, jsonify, request, abort, send_file
+from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
 
 from utils import send_text_message
 
+load_dotenv()
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable

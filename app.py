@@ -76,9 +76,11 @@ def handle_message(event):
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 
+    
 @handler.add(PostbackEvent)
 def handle_post_message(event):
 # can not get event text
+    print("Postback")
     print("event =", event)
     line_bot_api.reply_message(
                 event.reply_token,

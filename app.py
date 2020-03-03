@@ -65,7 +65,7 @@ def handle_message(event):
             ])
         template_message = TemplateSendMessage(
             alt_text='請用手機看此訊息！', template=buttons_template)
-        line_bot_api.reply_message(event.reply_token,  template_message)
+       # line_bot_api.reply_message(event.reply_token,  template_message)
         
         print("PostbackAction")
         return
@@ -78,7 +78,16 @@ def handle_message(event):
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
     
-
+@handler.add(PostbackEvent)
+def handle_post_message(event):
+# can not get event text
+    print("event =", event)
+    line_bot_api.reply_message(
+                event.reply_token,
+                TextMessage(
+                    text=str(str(event.postback.data)),
+                )
+            )
     
 
 import os

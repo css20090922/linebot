@@ -61,12 +61,12 @@ def handle_message(event):
                 PostbackAction(label='每日五字', data='5word',text='每日五字'),
                 PostbackAction(label='小測驗', data='exam',text='小測驗'),
                 PostbackAction(label='新增單字', data='addvoc',text='新增單字')
-                  
+                
             ])
         template_message = TemplateSendMessage(
             alt_text='請用手機看此訊息！', template=buttons_template)
         line_bot_api.reply_message(event.reply_token,  template_message)
-        
+        print("小幫手")
        
         return
     if matchChi:
@@ -76,6 +76,7 @@ def handle_message(event):
     else:
         reply_text = "亂碼，請重新輸入"
     message = TextSendMessage(reply_text)
+    print(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 """   
 @handler.add(PostbackEvent)

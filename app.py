@@ -77,7 +77,7 @@ def handle_message(event):
         reply_text = "亂碼，請重新輸入"
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
-  
+"""   
 @handler.add(PostbackEvent)
 def handle_post_message(event):
 # can not get event text
@@ -90,7 +90,7 @@ def handle_post_message(event):
                 )
             )
     
-
+"""
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

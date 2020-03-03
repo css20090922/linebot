@@ -1,15 +1,17 @@
 import os
 import sys
-
+import gspread
 
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
-
+from SheetMgr import *
+from fsm import TocMachine
 from utils import send_text_message
-
+from oauth2client.service_account import ServiceAccountCredentials
+from textUtil import *
 load_dotenv()
 
 app = Flask(__name__)
@@ -48,19 +50,29 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print(event)
+    user_id = event.source.user_id
     text=event.message.text
-
-    if (text=="Hi"):
-        reply_text = "Hello"
-        #Your user ID
-
-    elif(text=="你好"):
-        reply_text = "哈囉"
-    elif(text=="機器人"):
-        reply_text = "叫我嗎"
+    
+    zhPattern = re.compile(u'[\u4e00-\u9fa5]+')
+    matchChi = zhPattern.search(key)
+    if (text=="小幫手"):
+           buttons_template = ButtonsTemplate(
+            title='我是小幫手', text='想要幹嘛呢', actions=[
+                PostbackAction(label='每日五字', data='5example'),
+                PostbackAction(label='小測驗', data='exam'),
+                PostbackAction(label='新增單字"', data='add'),
+  
+            ])
+            template_message = TemplateSendMessage(
+            alt_text='請用手機看此訊息！', template=buttons_template)
+    line_bot_api.reply_message(event.reply_token, buttons_template)
+    elif matchChi:
+        reply_text = "是中文"
+    elif word.encode( 'UTF-8' ).isalpha():
+        reply_text = "是英文
     else:
-        reply_text = text
-#如果非以上的選項，就會學你說話
+        reply_text = "亂碼，請重新輸入"
+#如果非以上的選項，就會翻譯
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 

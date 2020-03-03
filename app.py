@@ -69,7 +69,7 @@ def handle_message(event):
         print("小幫手")
        
         return
-    if matchChi:
+    elif matchChi:
         reply_text = "是中文"
     elif text.encode( 'UTF-8' ).isalpha():
         reply_text = "是英文"

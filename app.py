@@ -57,20 +57,15 @@ def handle_message(event):
     if (text=="小幫手"):
         buttons_template = ButtonsTemplate(
             title='我是小幫手', text='想要幹嘛呢', actions=[
-                PostbackAction(label='每日五字', data='5example',text='每日五字'),
-                PostbackAction(label='小測驗', data='exam',text='小測驗'),
-                PostbackAction(label='新增單字"', data='add',text='新增單字')
+                PostbackAction(label='每日五字', data='example',text=None),
+                PostbackAction(label='小測驗', data='exam',text=None),
+                PostbackAction(label='新增單字"', data='add',text=None)
   
             ])
         template_message = TemplateSendMessage(
             alt_text='請用手機看此訊息！', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, buttons_template)
-    elif text=="每日五字":
-        reply_text = "每日五字"
-    elif text=="小測驗":
-        reply_text = "小測驗"
-    elif text=="新增單字":
-        reply_text = "新增單字"
+
     elif matchChi:
         reply_text = "是中文"
     elif text.encode( 'UTF-8' ).isalpha():
@@ -81,6 +76,16 @@ def handle_message(event):
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 
+@handler.add(PostbackEvent)
+def handle_post_message(event):
+# can not get event text
+    print("event =", event)
+    line_bot_api.reply_message(
+                event.reply_token,
+                TextMessage(
+                    text=str(str(event.postback.data)),
+                )
+            )
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

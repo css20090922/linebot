@@ -15,7 +15,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-times = 5
+times = 10
 testing = False
 adding = False
 start = None
@@ -54,13 +54,15 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global adding ,testing 
+    global adding ,testing,times 
     print(event)
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
+    if(times==0):
+        testing = False
     
-    if adding == True  :
+    if adding   :
         
         if(language=="english"):
             reply_text = "新增單字為英文"
@@ -70,6 +72,16 @@ def handle_message(event):
             adding = False
         else :
             reply_text = "新增單字為亂碼"
+    elif testing  :
+        times = times-1
+        if(text=="停"):
+            testing=False
+            times=10
+            reply_text = "已停止"
+        elif(language=="english"):
+            reply_text = "輸入單字為英文"
+        elif(language=="chinese") :
+            reply_text = "輸入單字為中文"
     else :
         if (text=="小幫手"):
             
@@ -109,7 +121,7 @@ def handle_post_message(event):
     try:
     #回傳五個單字
         if action == "5word" :
-            for i in range(times):
+            for i in range(times=5):
                 line_bot_api.push_message(user_id, 
                     TextSendMessage(text=str(i)))
             return

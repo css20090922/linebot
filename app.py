@@ -87,7 +87,7 @@ def handle_post_message(event):
     line_bot_api.reply_message(
                 event.reply_token,
                 TextMessage(
-                    text=str(str(event.postback.postback.data)),
+                    text=str(str(event.postback.Postback.data)),
                 )
             )
     

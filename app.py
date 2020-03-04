@@ -60,10 +60,10 @@ def handle_message(event):
     global adding 
     if adding == True  :
         
-        if(isword=="english"):
+        if(language=="english"):
             reply_text = "新增單字為英文"
             adding = False
-        elif(isword=="chinese") :
+        elif(language=="chinese") :
             reply_text = "新增單字為中文"
             adding = False
         else :

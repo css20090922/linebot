@@ -116,6 +116,7 @@ def handle_post_message(event):
     #         line_bot_api.reply_message(event.reply_token, message)
     #新增單字
         elif action == "addvoc":
+            print("addvoc")
             message = "你要新增哪個單字呢"
             adding = True
             line_bot_api.reply_message(event.reply_token, message)

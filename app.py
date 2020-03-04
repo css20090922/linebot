@@ -57,7 +57,7 @@ def handle_message(event):
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-    
+    reply_text = None
     if adding :
         if(isword=="english"):
             message = "新增單字為英文"

@@ -118,7 +118,7 @@ def handle_post_message(event):
             
             time_start = datetime.datetime.now()
             testing=True
-            text="測驗開始，如需停止測驗請輸入/'停/'"
+            text="測驗開始，如需停止測驗請輸入\"停\""
     #新增單字
         elif action == "addvoc":
             print("addvoc")

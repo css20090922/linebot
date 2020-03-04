@@ -58,7 +58,8 @@ def handle_message(event):
     text=event.message.text
     language = isword(text)
 
-    if adding :
+    if adding == True  :
+
         if(isword=="english"):
             message = "新增單字為英文"
             adding = False

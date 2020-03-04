@@ -57,9 +57,9 @@ def handle_message(event):
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-
+    global adding 
     if adding == True  :
-
+        
         if(isword=="english"):
             message = "新增單字為英文"
             adding = False
@@ -98,12 +98,12 @@ def handle_message(event):
 #處裡postback的event
 @handler.add(PostbackEvent)
 def handle_post_message(event):
-    
+    global adding 
     print("postback")
     print("event =", event)
     user_id = event.source.user_id
     action = text=str(str(event.postback.data))
-    message=""
+    
     try:
     #回傳五個單字
         if action == "5word" :

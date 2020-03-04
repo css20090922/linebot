@@ -78,20 +78,20 @@ def handle_message(event):
     message = TextSendMessage(reply_text)
     print(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
-"""   
+
 @handler.add(PostbackEvent)
 def handle_post_message(event):
 # can not get event text
+    print("postback")
     print("event =", event)
-    print(event.postback.data)
     line_bot_api.reply_message(
                 event.reply_token,
                 TextMessage(
-                    text=str(str(event.postback.data)),
+                    text=str(str(event.postback.postback.data)),
                 )
             )
     
-"""
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

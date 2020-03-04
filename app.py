@@ -58,9 +58,9 @@ def handle_message(event):
         
         buttons_template = ButtonsTemplate(
             title='我是小幫手', text='想要幹嘛呢', actions=[
-                PostbackAction(label='每日五字', data='5word',text='每日五字'),
-                PostbackAction(label='小測驗', data='exam',text='小測驗'),
-                PostbackAction(label='新增單字', data='addvoc',text='新增單字')
+                PostbackAction(label='每日五字', data='5word'),
+                PostbackAction(label='小測驗', data='exam'),
+                PostbackAction(label='新增單字', data='addvoc')
                 
             ])
         template_message = TemplateSendMessage(

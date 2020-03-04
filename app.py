@@ -15,11 +15,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
-times = 10
-testing = False
+
 adding = False
-start = None
-time_start=datetime.datetime.now()
+
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -54,13 +52,12 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global adding ,testing,times 
+    global adding 
     print(event)
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-    if(times==0):
-        testing = False
+    
     
     if adding   :
         
@@ -72,23 +69,12 @@ def handle_message(event):
             adding = False
         else :
             reply_text = "新增單字為亂碼"
-    elif testing  :
-        times = times-1
-        if(text=="停"):
-            testing=False
-            times=10
-            reply_text = "已停止"
-        elif(language=="english"):
-            reply_text = "輸入單字為英文"
-        elif(language=="chinese") :
-            reply_text = "輸入單字為中文"
     else :
         if (text=="小幫手"):
             
             buttons_template = ButtonsTemplate(
                 title='我是小幫手', text='想要幹嘛呢，要查詢單字請直接輸入文字', actions=[
                     PostbackAction(label='每日五字', data='5word'),
-                    PostbackAction(label='小測驗', data='exam'),
                     PostbackAction(label='新增單字', data='addvoc')
                     
                 ])
@@ -112,7 +98,7 @@ def handle_message(event):
 #處裡postback的event
 @handler.add(PostbackEvent)
 def handle_post_message(event):
-    global adding,testing,time_start
+    global adding
     print("postback")
     print("event =", event)
     user_id = event.source.user_id
@@ -125,17 +111,13 @@ def handle_post_message(event):
                 line_bot_api.push_message(user_id, 
                     TextSendMessage(text=str(i)))
             return
-    #小測驗 
-        elif action == "exam" :
-            
-            time_start = datetime.datetime.now()
-            testing=True
-            text="測驗開始，如需停止測驗請輸入\"停\""
     #新增單字
         elif action == "addvoc":
             print("addvoc")
-            text="你要新增哪個單字呢"
+            testing = False
             adding = True
+            text="你要新增哪個單字呢"
+            
         else :
             return
         message = TextSendMessage(text)
@@ -144,15 +126,6 @@ def handle_post_message(event):
         # error handle
         raise e
     
-def compare_time(time_start,time_now) :
-    t1 = datetime.datetime.strptime(time_start, '%Y-%m-%d %H:%M:%S')
-    t2 = datetime.datetime.strptime(time_now, '%Y-%m-%d %H:%M:%S')
-    delta = t2-t1
-    if delta.minute>10 or delta.hour>1 or delta.day>1 or delta.month>1 or delta.year>1:
-        return True     
-    else :
-        return False
-
 def isword(word) :
     
     if is_all_chinese(word) :

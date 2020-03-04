@@ -101,13 +101,13 @@ def handle_post_message(event):
     global adding
     print("postback")
     print("event =", event)
+    times=5
     user_id = event.source.user_id
     action = text=str(str(event.postback.data))
-    
     try:
     #回傳五個單字
         if action == "5word" :
-            for i in range(times=5):
+            for i in range(times):
                 line_bot_api.push_message(user_id, 
                     TextSendMessage(text=str(i)))
             return

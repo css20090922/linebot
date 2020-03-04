@@ -19,6 +19,7 @@ times = 5
 testing = False
 adding = False
 start = None
+time_start=datetime.datetime.now()
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -53,11 +54,12 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    global adding ,testing 
     print(event)
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-    global adding 
+    
     if adding == True  :
         
         if(language=="english"):
@@ -98,7 +100,7 @@ def handle_message(event):
 #處裡postback的event
 @handler.add(PostbackEvent)
 def handle_post_message(event):
-    global adding 
+    global adding,testing,time_start
     print("postback")
     print("event =", event)
     user_id = event.source.user_id
@@ -110,20 +112,22 @@ def handle_post_message(event):
             for i in range(times):
                 line_bot_api.push_message(user_id, 
                     TextSendMessage(text=str(i)))
+            return
     #小測驗 
-    #     elif action == "exam" :
-    #         
-    #         time_now = datetime.datetime.now()
-    #         line_bot_api.reply_message(event.reply_token, message)
+        elif action == "exam" :
+            
+            time_start = datetime.datetime.now()
+            testing=True
+            text="測驗開始，如需停止測驗請輸入/'停/'"
     #新增單字
         elif action == "addvoc":
             print("addvoc")
             text="你要新增哪個單字呢"
-            message = TextSendMessage(text)
             adding = True
-            line_bot_api.reply_message(event.reply_token, message)
         else :
             return
+        message = TextSendMessage(text)
+        line_bot_api.reply_message(event.reply_token, message)
     except LineBotApiError as e:
         # error handle
         raise e

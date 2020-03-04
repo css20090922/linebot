@@ -61,13 +61,13 @@ def handle_message(event):
     if adding == True  :
         
         if(isword=="english"):
-            message = "新增單字為英文"
+            reply_text = "新增單字為英文"
             adding = False
         elif(isword=="chinese") :
-            message = "新增單字為中文"
+            reply_text = "新增單字為中文"
             adding = False
         else :
-            message = "新增單字為亂碼"
+            reply_text = "新增單字為亂碼"
     else :
         if (text=="小幫手"):
             

@@ -76,18 +76,19 @@ def handle_message(event):
     else:
         reply_text = "亂碼，請重新輸入"
     message = TextSendMessage(reply_text)
-    print(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 
 @handler.add(PostbackEvent)
 def handle_post_message(event):
-# can not get event text
+    times = 10
     print("postback")
     print("event =", event)
-    line_bot_api.reply_message(
+    action = text=str(str(event.postback.data))
+    for i in range(times):
+        line_bot_api.reply_message(
                 event.reply_token,
                 TextMessage(
-                    text=str(str(event.postback.data)),
+                    text=str(str(event.postback.data+" "+i)),
                 )
             )
     

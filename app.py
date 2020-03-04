@@ -52,12 +52,11 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    adding=False
     print(event)
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-    reply_text = None
+
     if adding :
         if(isword=="english"):
             message = "新增單字為英文"
@@ -93,7 +92,7 @@ def handle_message(event):
             reply_text = "亂碼，請重新輸入"
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
-
+    
 #處裡postback的event
 @handler.add(PostbackEvent)
 def handle_post_message(event):

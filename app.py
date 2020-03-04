@@ -6,7 +6,7 @@ import re
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
-from linebot.exceptions import InvalidSignatureError
+from linebot.exceptions import InvalidSignatureError,LineBotApiError 
 from linebot.models import *
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
@@ -85,9 +85,14 @@ def handle_post_message(event):
     print("event =", event)
     user_id = event.source.user_id
     action = text=str(str(event.postback.data))
-    for i in range(times):
-        line_bot_api.push_message(user_id, 
-            TextSendMessage(text=action+str(i)))
+    try:
+        for i in range(times):
+            line_bot_api.push_message(user_id, 
+                TextSendMessage(text=action+"   "+str(i)))
+    except LineBotApiError as e:
+        # error handle
+        raise e
+    
         
             
     

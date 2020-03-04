@@ -137,16 +137,19 @@ def compare_time(time_start,time_now) :
         return False
 
 def isword(word) :
-    zhPattern = re.compile(u'[\u4e00-\u9fa5]+')
-    matchChi = zhPattern.search(word)
-    if matchChi :
+    
+    if is_all_chinese(word) :
         return "chinese"
     elif  word.encode( 'UTF-8' ).isalpha() :
         return "english"
     else :
         return "error"
 
-    
+def is_all_chinese(strs):
+    for _char in strs:
+        if not '\u4e00' <= _char <= '\u9fa5':
+            return False
+    return True
 
 import os
 if __name__ == "__main__":

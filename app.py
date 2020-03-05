@@ -66,16 +66,18 @@ def handle_message(event):
             reply_text = "已停止新增單字"
             adding = False
         elif(language=="english"):
+            voc = text
             reply_text = "新增單字為英文"
         elif(language=="chinese") :
+            chi = text
             reply_text = "新增單字為中文"
+            addvoc(voc,chi)
             adding = False
         
         else :
             reply_text = "新增單字為亂碼\n請重新輸入\n如不要新增請輸入\"不要\""
     else :
         if (text=="小幫手"):
-            
             buttons_template = ButtonsTemplate(
                 title='我是小幫手', text='想要幹嘛呢\n要查詢單字請直接輸入文字', actions=[
                     PostbackAction(label='每日五字', data='5word'),

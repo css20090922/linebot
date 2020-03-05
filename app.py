@@ -59,23 +59,25 @@ def handle_message(event):
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-    
+    voc = None
     
     if adding   :
+        
         if text =="不要" :
             reply_text = "已停止新增單字"
             adding = False
-        elif(language=="english"):
+        elif(voc == None and language=="english"):
             voc = text
             reply_text = "新增單字為英文"
-        elif(language=="chinese") :
+        elif voc != None and language == "chinese":
             chi = text
             reply_text = "新增單字為中文"
             addvoc(voc,chi)
-            adding = False
-        
+            adding = False 
+            voc = None 
+            chi = voc
         else :
-            reply_text = "新增單字為亂碼\n請重新輸入\n如不要新增請輸入\"不要\""
+            reply_text = "輸入錯誤\n請重新輸入\n如不要新增請輸入\"不要\""
     else :
         if (text=="小幫手"):
             buttons_template = ButtonsTemplate(

@@ -71,7 +71,7 @@ def handle_message(event):
             voc = text
             reply_text = "新增單字為英文"
             print ("enter english")
-        elif not (voc !=  None) and language == "chinese":
+        elif (voc !=  None) and language == "chinese":
             chi = text
             reply_text = "新增單字為中文"
             addvoc(voc,chi)

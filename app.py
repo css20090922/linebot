@@ -62,15 +62,15 @@ def handle_message(event):
     
     
     if adding   :
-        
-        if(language=="english"):
+        if text =="不要" :
+            reply_text = "已停止新增單字"
+            adding = False
+        elif(language=="english"):
             reply_text = "新增單字為英文"
         elif(language=="chinese") :
             reply_text = "新增單字為中文"
             adding = False
-        elif text =="不要" :
-            reply_text = "已停止新增單字"
-            adding = False
+        
         else :
             reply_text = "新增單字為亂碼\n請重新輸入\n如不要新增請輸入\"不要\""
     else :

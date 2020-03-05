@@ -61,6 +61,7 @@ def handle_message(event):
     text=event.message.text.strip()
     if ';' in text :
         text.replace(';', '；')
+    print (str(text.find(';')))
     language = isword(text)
     
     
@@ -155,8 +156,6 @@ def is_all_chinese(strs):
     for _char in strs:
         if (not '\u4e00' <= _char <= '\u9fa5'): 
             b = False
-        if _char == '；' or  _char ==';':
-            b = True
     return b
 
 import os

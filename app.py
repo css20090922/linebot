@@ -70,12 +70,12 @@ def handle_message(event):
         elif(voc == None and language=="english"):
             voc = text.lower()
             print ("enter english")
-            reply_text = "新增單字為英文"
+            reply_text = "新增單字為{}".format(voc)
             
         elif (voc !=  None) and  (language == "chinese"):
             chi = text
             print (str(voc)+str(chi))
-            reply_text = "新增單字為中文"
+            reply_text = "新增單字成功"
             print ("enter chinese")
             successful = add_word(voc,chi)
             adding = False 
@@ -90,7 +90,7 @@ def handle_message(event):
         if (text=="小幫手"):
             buttons_template = ButtonsTemplate(
                 title='我是小幫手', text='想要幹嘛呢\n要查詢單字請直接輸入文字', actions=[
-                    PostbackAction(label='每日一字', data='5word'),
+                    PostbackAction(label='每日一字', data='word'),
                     PostbackAction(label='新增單字', data='addvoc')
                 ])
             template_message = TemplateSendMessage(

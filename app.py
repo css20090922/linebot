@@ -59,6 +59,8 @@ def handle_message(event):
     print(event)
     user_id = event.source.user_id
     text=event.message.text.strip()
+    if ';' in text :
+        text.replace(';', '；')
     language = isword(text)
     
     

@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError,LineBotApiError 
 from linebot.models import *
-from SheetMgr import addvoc
+from SheetMgr import *
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
 

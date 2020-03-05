@@ -12,13 +12,16 @@ spreadsheet_name = "vocabulary"
 
 
 
-
 def addvoc(voc,chi) :
     try:
         # Login if necessary.
         worksheet = login_open_sheet(oauth_key_file, spreadsheet_path)
         # Append the data in the spreadsheet
-        worksheet.append_row(voc , chi) #將資料加在最下方
+        word=[voc,chi]
+        
+        all = worksheet.get_all_values()
+        end_row = len(all) + 1
+        worksheet.insert_row(word,end_row) #將資料加在最下方
         print ("added successful")
         return True
     except:
@@ -34,7 +37,8 @@ def login_open_sheet(oauth_key_file, spreadsheet):
         credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, scope)
         gc = gspread.authorize(credentials)
         
-        worksheet = gc.open(spreadsheet).sheet1
+        worksheet = gc.open_by_key(spreadsheet).sheet1
+        
         return worksheet
     except Exception as ex:
         print('Unable to login and get spreadsheet.  Check OAuth credentials, spreadsheet name, and make sure spreadsheet is shared to the client_email address in the OAuth .json file!')

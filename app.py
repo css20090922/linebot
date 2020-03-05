@@ -58,7 +58,7 @@ def handle_message(event):
     global adding,voc,chi
     print(event)
     user_id = event.source.user_id
-    text=event.message.text
+    text=event.message.text.strip()
     language = isword(text)
     
     

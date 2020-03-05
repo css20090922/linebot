@@ -18,7 +18,7 @@ worksheet = gc.open_by_key(spreadsheet_key).sheet1
 def search_word(word,language ):
     global worksheet
     try :
-        cell = worksheet.find(word)
+        cell = worksheet.find(word.strip())
         row = cell.row
         col = cell.col
         if(language =="chinese") :
@@ -32,6 +32,7 @@ def search_word(word,language ):
 
 def add_word (voc ,chi) :
     global worksheet
+    voc = voc.strip()
     res = search_word(voc,"english")
     
     if(res == "查無此字") :
@@ -48,7 +49,7 @@ def get_word():
     vlists = worksheet.get_all_values()
     print(vlists)
     rand = int(random.random()*len(vlists)-1)
-    return vlists[rand]
+    return vlists[rand].strip()
         
 
 

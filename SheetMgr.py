@@ -20,9 +20,9 @@ except:
     worksheet = None
 
 
-def addvoc(eng,chi) :
+def addvoc(voc,chi) :
     # Append the data in the spreadsheet
-    worksheet.append_row(eng , chi) #將資料加在最下方
+    worksheet.append_row(voc , chi) #將資料加在最下方
 
 def login_open_sheet(oauth_key_file, spreadsheet):
     """Connect to Google Docs spreadsheet and return the first worksheet."""

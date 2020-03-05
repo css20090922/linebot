@@ -118,10 +118,7 @@ def handle_post_message(event):
     try:
     #回傳五個單字
         if action == "5word" :
-            for i in range(times):
-                line_bot_api.push_message(user_id, 
-                    TextSendMessage(text=str(i)))
-            return
+            text="今天的每日一字"
     #新增單字
         elif action == "addvoc":
             print("addvoc")

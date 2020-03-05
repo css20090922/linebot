@@ -34,7 +34,7 @@ def login_open_sheet(oauth_key_file, spreadsheet):
         credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, scope)
         gc = gspread.authorize(credentials)
         
-        worksheet = gc.open(spreadsheet).sheet1
+        worksheet = gc.open(spreadsheet_path).sheet1
         return worksheet
     except Exception as ex:
         print('Unable to login and get spreadsheet.  Check OAuth credentials, spreadsheet name, and make sure spreadsheet is shared to the client_email address in the OAuth .json file!')

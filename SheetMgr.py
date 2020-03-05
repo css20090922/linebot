@@ -11,13 +11,11 @@ gss_scopes =  ['https://spreadsheets.google.com/feeds',
 spreadsheet_key = "1pGn-4H6gzWrZVvP7gOitmgcP8pVPPSyvD6r2kMnPu-E"
 spreadsheet_name = "vocabulary"
 
-gc = auth_gss_client(oauth_key_file, gss_scopes)
+credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, gss_scopes)
+gc = gspread.authorize(credentials)
 worksheet = gc.open_by_key(spreadsheet_key).sheet1
 
-def auth_gss_client(path, scopes):
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(path,
-                                                                   scopes)
-    return gspread.authorize(credentials)
+
 
 def search_word(word,language ):
     global worksheet

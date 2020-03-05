@@ -153,7 +153,7 @@ def is_all_chinese(strs):
     for _char in strs:
         if (not '\u4e00' <= _char <= '\u9fa5'): 
             b = False
-        elif not(_char == '；' or  _char ==';'):
+        elif _char != '；' or  _char !=';':
             b = False
         if(_char=='；'or _char==';') :
             print ("detected")

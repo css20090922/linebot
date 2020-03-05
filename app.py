@@ -87,7 +87,7 @@ def handle_message(event):
         else :
             reply_text = "輸入錯誤\n請重新輸入\n如不要新增請輸入\"不要\""
     else :
-        if (text=="小幫手"):
+        if (text=="小幫手") or (text=="helper"):
             buttons_template = ButtonsTemplate(
                 title='我是小幫手', text='想要幹嘛呢\n要查詢單字請直接輸入文字', actions=[
                     PostbackAction(label='每日一字', data='word'),

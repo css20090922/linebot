@@ -22,10 +22,13 @@ def search_word(word,language ):
     cell = worksheet.find(word)
     row = cell.row
     col = cell.cel
-    if(language =="chinese") :
-        return worksheet.cell(row, col-1).value
+    if(row==0 or col ==0):
+        return "查無此字"
     else :
-        return worksheet.cell(row, col+1).value
+        if(language =="chinese") :
+            return worksheet.cell(row, col-1).value
+        else :
+            return worksheet.cell(row, col+1).value
 
 def add_word (voc ,chi) :
     global worksheet

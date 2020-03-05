@@ -47,7 +47,7 @@ def get_word():
     vlists = worksheet.get_all_values()
     print(vlists)
     rand = int(random.random()*len(vlists)-1)
-    return list[rand]
+    return vlists[rand]
         
 
 

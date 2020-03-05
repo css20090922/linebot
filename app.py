@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError,LineBotApiError 
 from linebot.models import *
-from SheetMgr import *
+from SheetMgr import * 
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -77,7 +77,7 @@ def handle_message(event):
             print (str(voc)+str(chi))
             reply_text = "新增單字為中文"
             print ("enter chinese")
-            successful = addvoc(voc,chi)
+            successful = SheetMgr.add_word(voc,chi)
             adding = False 
             voc = None 
             chi = None
@@ -99,12 +99,10 @@ def handle_message(event):
             print("小幫手")
         
             return
-            #測試輸入是否為中文
-        elif language == "chinese":
-            reply_text = "是中文"
-            #測試輸入是否為英文
-        elif language == "english":
-            reply_text = "是英文"
+            #測試輸入是否為中文或英文
+        elif language == "chinese" or language == "english":
+            reply_text = SheetMgr.search_word(text,language)
+
         elif text == "怎麼用" :
             reply_text = "輸入\"小幫手\"可以叫出小幫手\n直接輸入可以查詢單字\n中英文皆可"
         else:

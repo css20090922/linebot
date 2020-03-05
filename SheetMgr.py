@@ -6,45 +6,41 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 oauth_key_file = 'googleapi-token.json' 
-scope =  ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-spreadsheet_path = "1pGn-4H6gzWrZVvP7gOitmgcP8pVPPSyvD6r2kMnPu"
+gss_scopes =  ['https://spreadsheets.google.com/feeds'',
+                'https://www.googleapis.com/auth/drive']
+spreadsheet_key = "1pGn-4H6gzWrZVvP7gOitmgcP8pVPPSyvD6r2kMnPu-E"
 spreadsheet_name = "vocabulary"
 
+gc = auth_gss_client(oauth_key_file, gss_scopes)
+worksheet = gc.open_by_key(spreadsheet_key).sheet1
 
+def auth_gss_client(path, scopes):
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(path,
+                                                                   scopes)
+    return gspread.authorize(credentials)
 
-def addvoc(voc,chi) :
-    try:
-        # Login if necessary.
-        worksheet = login_open_sheet(oauth_key_file, spreadsheet_path)
-        # Append the data in the spreadsheet
-        word=[voc,chi]
-        
-        all = worksheet.get_all_values()
-        end_row = len(all) + 1
-        worksheet.insert_row(word,end_row) #將資料加在最下方
-        print ("added successful")
-        return True
-    except:
-        # Null out the worksheet so a login is performed at the top of the loop.
-        print('Error, logging in again')
+def search_word(word,language ):
+    global worksheet
+    cell = worksheet.find(word)
+    row = cell.row
+    col = cell.cel
+    if(language =="chinese") :
+        return worksheet.cell(row, col-1).value
+    else :
+        return worksheet.cell(row, col+1).value
+
+def add_word (voc ,chi) :
+    global worksheet
+    cell = None
+    cell = worksheet.find(voc)
+    if cell!=None :
         return False
-       
-        
-
-def login_open_sheet(oauth_key_file, spreadsheet):
-    """Connect to Google Docs spreadsheet and return the first worksheet."""
-    try:
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, scope)
-        gc = gspread.authorize(credentials)
-        
-        worksheet = gc.open_by_key(spreadsheet).sheet1
-        
-        return worksheet
-    except Exception as ex:
-        print('Unable to login and get spreadsheet.  Check OAuth credentials, spreadsheet name, and make sure spreadsheet is shared to the client_email address in the OAuth .json file!')
-        print('Google sheet login failed with error:', ex)
-        sys.exit(1)
-        
+    else :
+        vlist = worksheet.row_values(1)
+        last_row = vlist .len()+1
+        worksheet.update_cell(last_row, 1, voc)
+        worksheet.update_cell(last_row, 2, chi)
+        return True
 
 
 

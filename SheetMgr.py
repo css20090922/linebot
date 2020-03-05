@@ -7,7 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 oauth_key_file = 'googleapi-token.json' 
 scope =  ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-spreadsheet = "vocabulary"
+spreadsheet_path = "1pGn-4H6gzWrZVvP7gOitmgcP8pVPPSyvD6r2kMnPu-E"
 
 
 
@@ -16,7 +16,7 @@ spreadsheet = "vocabulary"
 def addvoc(voc,chi) :
     try:
         # Login if necessary.
-        worksheet = login_open_sheet(oauth_key_file, spreadsheet)
+        worksheet = login_open_sheet(oauth_key_file, spreadsheet_path)
         # Append the data in the spreadsheet
         worksheet.append_row(voc , chi) #將資料加在最下方
         print ("add successful")

@@ -128,8 +128,7 @@ def handle_post_message(event):
             print("addvoc")
             testing = False
             adding = True
-            text="你要新增哪個單字呢\n請先打英文在打中文\n如不要新增請輸入\"不要\""
-            
+            text="你要新增哪個單字呢\n請先打英文在打中文\n如不要新增請輸入\"不要\""       
         else :
             return
         message = TextSendMessage(text)

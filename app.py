@@ -1,8 +1,10 @@
 import os
 import sys
 import gspread
-
 import re
+import SheetMgr
+import datetime
+
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
@@ -10,8 +12,6 @@ from linebot.exceptions import InvalidSignatureError,LineBotApiError
 from linebot.models import *
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
-from SheetMgr import addvoc
-import datetime
 
 load_dotenv()
 

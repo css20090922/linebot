@@ -1,8 +1,6 @@
-import json
 import sys
-import time
-import datetime
 import gspread
+import random
 from oauth2client.service_account import ServiceAccountCredentials
 
 oauth_key_file = 'googleapi-token.json' 
@@ -38,15 +36,17 @@ def add_word (voc ,chi) :
     
     if(res == "查無此字") :
         vlist = worksheet.row_values(1)
-        last_row = vlist.len()+1
+        last_row = len(vlist)+1
         worksheet.update_cell(last_row, 1, voc)
         worksheet.update_cell(last_row, 2, chi)
         return True
     else :
         return False
     
-        
-    
+def get_word():
+    vlists = worksheet.get_all_values()
+    rand = int(random.random*len(vlists)-1)
+    return list[rand]
         
 
 

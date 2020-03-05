@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError,LineBotApiError 
 from linebot.models import *
-from SheetMgr import search_word,add_word
+from SheetMgr import search_word,add_word,get_word
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -120,9 +120,10 @@ def handle_post_message(event):
     user_id = event.source.user_id
     action = text=str(str(event.postback.data))
     try:
-    #回傳五個單字
-        if action == "5word" :
-            text="今天的每日一字為{}，意思是{}".format("english","英文")
+    #回傳一個單字
+        if action == "word" :
+            word = get_word()
+            text="今天的每日一字為{}，意思是{}".format(word[0],word[1])
     #新增單字
         elif action == "addvoc":
             print("addvoc")

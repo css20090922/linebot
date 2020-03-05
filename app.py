@@ -60,6 +60,7 @@ def handle_message(event):
     text=event.message.text
     language = isword(text)
     voc = None
+    chi = None
     
     if adding   :
         
@@ -76,7 +77,7 @@ def handle_message(event):
             addvoc(voc,chi)
             adding = False 
             voc = None 
-            chi = voc
+            chi = None
             print ("enter chinese")
         else :
             reply_text = "輸入錯誤\n請重新輸入\n如不要新增請輸入\"不要\""

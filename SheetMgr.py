@@ -34,7 +34,7 @@ def search_word(word,language ):
 
 def add_word (voc ,chi) :
     global worksheet
-    res = search_word(voc)
+    res = search_word(voc,"english")
     
     if(res == "查無此字") :
         vlist = worksheet.row_values(1)

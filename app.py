@@ -70,7 +70,7 @@ def handle_message(event):
         elif(voc == None and language=="english"):
             voc = text.lower()
             print ("enter english")
-            reply_text = "新增單字為{}".format(voc)
+            reply_text = "新增單字為{}\n請輸入中文，有很多意思的話請用分號隔開".format(voc)
             
         elif (voc !=  None) and  (language == "chinese"):
             chi = text

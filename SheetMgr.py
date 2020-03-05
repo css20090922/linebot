@@ -6,23 +6,24 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 oauth_key_file = 'googleapi-token.json' 
-scope =  ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+scope =  ['https://spreadsheets.google.com/feeds']
 spreadsheet = "vocabulary"
 
 
-try:
-    # Login if necessary.
-    worksheet = login_open_sheet(oauth_key_file, spreadsheet )
-except:
-    # Error appending data, most likely because credentials are stale.
-    # Null out the worksheet so a login is performed at the top of the loop.
-    print('Error, logging in again')
-    worksheet = None
+
 
 
 def addvoc(voc,chi) :
-    # Append the data in the spreadsheet
-    worksheet.append_row(voc , chi) #將資料加在最下方
+    try:
+        # Login if necessary.
+        worksheet = login_open_sheet(oauth_key_file, spreadsheet)
+        # Append the data in the spreadsheet
+        worksheet.append_row(voc , chi) #將資料加在最下方
+    except:
+        # Null out the worksheet so a login is performed at the top of the loop.
+        print('Error, logging in again')
+       
+        
 
 def login_open_sheet(oauth_key_file, spreadsheet):
     """Connect to Google Docs spreadsheet and return the first worksheet."""

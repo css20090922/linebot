@@ -6,7 +6,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 oauth_key_file = 'googleapi-token.json' 
-gss_scopes =  ['https://spreadsheets.google.com/feeds'',
+gss_scopes =  ['https://spreadsheets.google.com/feeds',
                 'https://www.googleapis.com/auth/drive']
 spreadsheet_key = "1pGn-4H6gzWrZVvP7gOitmgcP8pVPPSyvD6r2kMnPu-E"
 spreadsheet_name = "vocabulary"

@@ -11,6 +11,7 @@ from linebot.models import *
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
 import datetime
+from SheetMgr import addvoc
 load_dotenv()
 
 app = Flask(__name__)
@@ -63,17 +64,19 @@ def handle_message(event):
         
         if(language=="english"):
             reply_text = "新增單字為英文"
-            adding = False
         elif(language=="chinese") :
             reply_text = "新增單字為中文"
             adding = False
+        elif text =="不要" :
+            reply_text = "已停止新增單字"
+            adding = False
         else :
-            reply_text = "新增單字為亂碼"
+            reply_text = "新增單字為亂碼\n請重新輸入\n如不要新增請輸入\"不要\""
     else :
         if (text=="小幫手"):
             
             buttons_template = ButtonsTemplate(
-                title='我是小幫手', text='想要幹嘛呢，要查詢單字請直接輸入文字', actions=[
+                title='我是小幫手', text='想要幹嘛呢\n要查詢單字請直接輸入文字', actions=[
                     PostbackAction(label='每日五字', data='5word'),
                     PostbackAction(label='新增單字', data='addvoc')
                     
@@ -90,6 +93,8 @@ def handle_message(event):
             #測試輸入是否為英文
         elif language == "english":
             reply_text = "是英文"
+        elif text == "怎麼用" :
+            reply_text = "輸入\"小幫手\"可以叫出小幫手\n直接輸入可以查詢單字\n中英文皆可"
         else:
             reply_text = "亂碼，請重新輸入"
     message = TextSendMessage(reply_text)
@@ -116,7 +121,7 @@ def handle_post_message(event):
             print("addvoc")
             testing = False
             adding = True
-            text="你要新增哪個單字呢"
+            text="你要新增哪個單字呢\n請先打英文在打中文\n如不要新增請輸入\"不要\""
             
         else :
             return

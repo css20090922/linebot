@@ -19,7 +19,8 @@ app = Flask(__name__)
 
 
 adding = False
-
+voc = None
+chi = None
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -54,13 +55,12 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global adding 
+    global adding,voc,chi
     print(event)
     user_id = event.source.user_id
     text=event.message.text
     language = isword(text)
-    voc = None
-    chi = None
+    
     
     if adding   :
         

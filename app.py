@@ -69,17 +69,21 @@ def handle_message(event):
             adding = False
         elif(voc == None and language=="english"):
             voc = text
-            reply_text = "新增單字為英文"
             print ("enter english")
+            reply_text = "新增單字為英文"
+            
         elif (voc !=  None) and  (language == "chinese"):
             chi = text
             print (str(voc)+str(chi))
             reply_text = "新增單字為中文"
-            addvoc(voc,chi)
+            print ("enter chinese")
+            successful = addvoc(voc,chi)
             adding = False 
             voc = None 
             chi = None
-            print ("enter chinese")
+            
+            if not successful :
+                reply_text = "新增失敗"
         else :
             reply_text = "輸入錯誤\n請重新輸入\n如不要新增請輸入\"不要\""
     else :

@@ -6,7 +6,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 oauth_key_file = 'googleapi-token.json' 
-scope =  ['https://spreadsheets.google.com/feeds']
+scope =  ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 spreadsheet = "vocabulary"
 
 
@@ -19,9 +19,12 @@ def addvoc(voc,chi) :
         worksheet = login_open_sheet(oauth_key_file, spreadsheet)
         # Append the data in the spreadsheet
         worksheet.append_row(voc , chi) #將資料加在最下方
+        print ("add successful")
+        return True
     except:
         # Null out the worksheet so a login is performed at the top of the loop.
         print('Error, logging in again')
+        return False
        
         
 

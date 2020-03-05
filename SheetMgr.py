@@ -20,7 +20,7 @@ def search_word(word,language ):
     try :
         cell = worksheet.find(word)
         row = cell.row
-        col = cell.cel
+        col = cell.col
         if(language =="chinese") :
             return worksheet.cell(row, col-1).value
         else :

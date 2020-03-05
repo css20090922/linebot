@@ -155,6 +155,8 @@ def is_all_chinese(strs):
             b = False
         elif not(_char == '；' or  _char ==';'):
             b = False
+        if(_char=='；'or _char==';') :
+            print ("detected")
     return b
 
 import os

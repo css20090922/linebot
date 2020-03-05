@@ -149,10 +149,13 @@ def isword(word) :
         return "error"
 
 def is_all_chinese(strs):
+    b = True
     for _char in strs:
-        if (not '\u4e00' <= _char <= '\u9fa5') or  _char != '；' or  _char !=';':
-            return False
-    return True
+        if (not '\u4e00' <= _char <= '\u9fa5'): 
+            b = False
+        elif not(_char == '；' or  _char ==';'):
+            b = False
+    return b
 
 import os
 if __name__ == "__main__":

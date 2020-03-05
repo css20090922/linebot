@@ -2,7 +2,6 @@ import os
 import sys
 import gspread
 import re
-import SheetMgr
 import datetime
 
 from flask import Flask, jsonify, request, abort, send_file
@@ -10,6 +9,7 @@ from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError,LineBotApiError 
 from linebot.models import *
+from SheetMgr import *
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -80,7 +80,6 @@ def handle_message(event):
                 title='我是小幫手', text='想要幹嘛呢\n要查詢單字請直接輸入文字', actions=[
                     PostbackAction(label='每日五字', data='5word'),
                     PostbackAction(label='新增單字', data='addvoc')
-                    
                 ])
             template_message = TemplateSendMessage(
                 alt_text='請用手機看此訊息！', template=buttons_template)

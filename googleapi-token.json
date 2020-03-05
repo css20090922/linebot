@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "impressive-kite-270010",
+  "private_key_id": "2a5c7919ca57e8e18a5880652d58047f5b5a7999",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCXOISOVr6xkQJ4\nvwWgeSZbFWQ2f5Jf0ytg9+b94RCw1bIFuS2QevCnW3NGa9YvfzA0eDromM+p+wRa\nMPNtQe/6lMHJMu4/nDkc4iUE8897y74Q4l8yd11cb5HvSqhNyXVbE6FWw97iy7t0\nWz+AFEp3qYBuJ1sE2n5XFUy2+d+hA72Q+peATGswCsUDXstvMVcfdwA3N8X9Ljws\n8DivaHO+V5MmDJFSqeTnNENE+kQkQ9GwxD+Tam5iriTPVNYDifpkZWGctrcE58wp\nQ8soxBFwFK2O8kISsQQolB/AfvzUXLBHmQ5zlW/BOTM14u4rhFXa7V/L/jv87Wuv\n69TLK2r/AgMBAAECggEAF63VF+LJFnico01UyLrfwNh51OInXf5CPHtlE3ES0is2\n0ULyDxMpLCjw7+CCl/UPFnrod96Mef32lwGI70f+whquuN4oRL6mNM8hOS7NA6y0\n1OOq63XvIRfOtA0uizZWEY5ihPnDz3ipIEBfkk3bFp9snxMQ42gr61/y9MiYy2yo\nYP2on4gM+Euelop34CI9FWaUwDPR/ArEXxKnS1oIYU5RewBT017rdEdfoup7mbLF\nDBKQBw+lr++jXNfPVelKm3QoPoo6SE6OqfVly1ZffQnMD2Punq4jwdBOgRMXwOCI\nKBqh8nRa6Geo4c4yHx1OXNhc7rQ0h2RzYUMugXO+UQKBgQDJ/ood00ZzwWWQymLu\nCEqtAMKLOoEbkcVJ0YlX7iscZQBOkK6vzIr8lb6FeXCmsyebrLQUuivifbhUQm/D\npqDVsZ/6o1cJNds/NmIlpddrPwTJfQPRzvefnklHVe6upyGY4c9ZPqwzf/YjvEH8\nieJtClzRufNbJn+1Jw1cn2m0TwKBgQC/psta2bBeU2kO1TX+yiVV/6FsbpLYzlGX\nUhNajsYlyQo7TtyU841+SeFxlgzklmQdqgjSi4VMsh3GXEMvMvtMpstp15bY6ALx\nZLeAlNGpdje9W4SkbZCLk+QNNplIK2tWC8zssmcXZAbUWYzjnL++06oxSUxxafOO\n4s9uybNCUQKBgEETinfVa2s7sXcWXQ0HCtf12Ld2X8X8Dq2bnj3/80+wkoq9PipR\nIa4CqGDkIRDzwxz6ZQIQgLb1ff9XcB5+fm6aTUo4eX/0I/CXmsM6TM62fNpVNnfP\n0CNSoZUj8EPAgKh6h4zfDieBYFFfA3tTCOnMXt8Ko4aIPrikHj/q8+ktAoGAD11J\n1EC7ePRq6buCFqkSETDrOgwrTaJMvDriPlJP5FuXrGWIHZDg+QznO/nxkqnT4OTu\nzCJPT3TAGlTvNet6ZgzBJf0YpM8E3WFbrL1BibpmgZHCsoPuIKJ8l+qWo0iH1GAh\nz6AFz8Q/H+sF9oFshdnmPQlJTZZW5k+cnZ8h9eECgYA4mg5h76L3WLtb3yVvnSlJ\nYj8rYjjxd3W9C/uSn5SnwaXWDGLMEFQs0p19FlP/FNnajQSovA/Qco/qhEaZPJqM\nF1QND9bP6OR8nTf2iSQbX1apGC7NjL6GNvvE32bMIsQ27qyW2kdwBSfj0Q7lSJoD\n9Z6x20BHzIgX9oVXB3J26A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "voacabulary-helper@impressive-kite-270010.iam.gserviceaccount.com",
+  "client_id": "114000407485978867715",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/voacabulary-helper%40impressive-kite-270010.iam.gserviceaccount.com"
+}

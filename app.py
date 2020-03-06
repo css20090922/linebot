@@ -25,7 +25,7 @@ chi = None
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
-print("line secret  ")
+
 if channel_secret is None:
     print("Specify LINE_CHANNEL_SECRET as environment variable.")
     sys.exit(1)
@@ -37,7 +37,7 @@ line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 handler = WebhookHandler(channel_secret)
 #圖文選單
-rich_menu_id = 'richmenu-0000000000'
+
 img_path="richmenu_1583498398759.jpg"
 content_type = "image/jpeg"
 rich_menu_to_create = RichMenu(
@@ -52,19 +52,20 @@ rich_menu_to_create = RichMenu(
 richmenu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
 with open(img_path, 'rb') as f:
     line_bot_api.set_rich_menu_image(richmenu_id, content_type, f)
+    
 line_bot_api.set_default_rich_menu(richmenu_id)
 
-@responses.activate
-def test_create_rich_menu():
-    responses.add(
-        responses.POST,
-        LineBotApi.DEFAULT_API_ENDPOINT + '/v2/bot/richmenu',
-        json={"richMenuId": richmenu_id}, status=200
-    )
-    rich_menu = rich_menu_to_create 
+# @responses.activate
+# def test_create_rich_menu():
+#     responses.add(
+#         responses.POST,
+#         LineBotApi.DEFAULT_API_ENDPOINT + '/v2/bot/richmenu',
+#         json={"richMenuId": richmenu_id}, status=200
+#     )
+#     rich_menu = rich_menu_to_create 
 
-    result = parser.create_rich_menu(rich_menu)
-    request = responses.calls[0].request
+#     result = parser.create_rich_menu(rich_menu)
+#     request = responses.calls[0].request
     
 
 

@@ -37,6 +37,8 @@ line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 handler = WebhookHandler(channel_secret)
 #圖文選單
+img_path="richmenu_1583498398759.jpg"
+content_type = "image/jpeg"
 rich_menu_to_create = RichMenu(
     size=RichMenuSize(width=2500, height=843),
     selected=False,
@@ -47,15 +49,13 @@ rich_menu_to_create = RichMenu(
         action=PostbackAction(label='新增單字', data='addvoc'))]
 )
 richmenu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
-img = request.files['richmenu_1583498398759.jpg'].read()
-rich_menu_id = request.form[richmenu_id]
-content_type = "image/png"
-try:
-    line_bot_api.set_rich_menu_image(
-        rich_menu_id, content_type, img)
-except Exception as e:
-    print("===Upload Exception===")
-line_bot_api.set_default_rich_menu(rich_menu_id)
+with open(img_path, 'rb') as f:
+    line_bot_api.set_rich_menu_image(richmenu_id, content_type, f)
+line_bot_api.set_default_rich_menu(richmenu_id)
+
+
+
+
 
 
 # 監聽所有來自 /callback 的 Post Request

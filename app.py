@@ -41,7 +41,7 @@ handler = WebhookHandler(channel_secret)
 img_path="richmenu_1583498398759.jpg"
 content_type = "image/jpeg"
 rich_menu_to_create = RichMenu(
-    size=RichMenuSize(width=843, height=843),
+    size=RichMenuSize(width=2500, height=843),
     selected=False,
     name="小幫手",
     chat_bar_text="Tap here",

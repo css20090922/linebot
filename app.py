@@ -102,6 +102,7 @@ def handle_message(event):
         elif text == "怎麼用" :
             reply_text = "輸入\"小幫手\"可以叫出小幫手\n直接輸入可以查詢單字\n中英文皆可"
         else:
+            print(text.lower())
             reply_text = search_word(text.lower(),language)
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
@@ -138,7 +139,7 @@ def isword(word) :
     if  word.encode( 'UTF-8' ).isalpha() :
         return "english"
     else :
-        return "error"
+        return "other"
 
 
 

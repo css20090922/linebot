@@ -22,7 +22,7 @@ def search_word(word,language ):
         row = cell.row
         col = cell.col
         if(language =="english") :
-            print( worksheet.row_values(row)[2:])
+            print( worksheet.row_values(row)[1:])
             return worksheet.row_values(row)
         else :
             return worksheet.cell(row, 1).value

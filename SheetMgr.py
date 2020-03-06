@@ -41,7 +41,7 @@ def add_word (voc ,chi) :
         last_row = len(vlist)+1
         print("add {} at {}",voc,last_row)
         worksheet.update_cell(last_row, 1, voc)
-        for i in chi :
+        for i in range(len(chi)):
             worksheet.update_cell(last_row, 2+i, chi[i])
         return True
     else :

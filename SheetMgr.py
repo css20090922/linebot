@@ -18,13 +18,13 @@ worksheet = gc.open_by_key(spreadsheet_key).sheet1
 def search_word(word,language ):
     global worksheet
     try :
-        cell = worksheet.find(word.strip())
+        cell = worksheet.find(word)
         row = cell.row
         col = cell.col
-        if(language =="chinese") :
-            return worksheet.cell(row, col-1).value
+        if(language =="english") :
+            return worksheet.row_values(row)[2:]
         else :
-            return worksheet.cell(row, col+1).value
+            return worksheet.cell(row, 1).value
     except  gspread.exceptions.CellNotFound as gs :
         print ("no result")
         return "查無此字"
@@ -40,7 +40,8 @@ def add_word (voc ,chi) :
         last_row = len(vlist)+1
         print("add {} at {}",voc,last_row)
         worksheet.update_cell(last_row, 1, voc)
-        worksheet.update_cell(last_row, 2, chi)
+        for i in chi :
+            worksheet.update_cell(last_row, 2+i, chi[i])
         return True
     else :
         return False

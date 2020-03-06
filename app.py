@@ -59,9 +59,6 @@ def handle_message(event):
     print(event)
     user_id = event.source.user_id
     text=event.message.text.strip()
-    if ';' in text :
-        text.replace(';', '；')
-    print (str(text.find(';')))
     language = isword(text)
     
     
@@ -75,8 +72,8 @@ def handle_message(event):
             print ("enter english")
             reply_text = "新增單字為{}\n請輸入中文，有很多意思的話請用分號隔開".format(voc)
             
-        elif (voc !=  None) and  (language == "chinese"):
-            chi = text
+        elif (voc !=  None) and  (language !="english"):
+            chi = text.split()
             print (str(voc)+str(chi))
             reply_text = "新增單字成功"
             print ("enter chinese")
@@ -143,20 +140,12 @@ def handle_post_message(event):
         raise e
     
 def isword(word) :
-    
-    if is_all_chinese(word) :
-        return "chinese"
-    elif  word.encode( 'UTF-8' ).isalpha() :
+    if  word.encode( 'UTF-8' ).isalpha() :
         return "english"
     else :
         return "error"
 
-def is_all_chinese(strs):
-    b = True
-    for _char in strs:
-        if (not '\u4e00' <= _char <= '\u9fa5'): 
-            b = False
-    return b
+
 
 import os
 if __name__ == "__main__":

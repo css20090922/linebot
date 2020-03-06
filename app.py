@@ -99,15 +99,13 @@ def handle_message(event):
             print("小幫手")
         
             return
-            #測試輸入是否為中文或英文
+            
        
 
         elif text == "怎麼用" :
             reply_text = "輸入\"小幫手\"可以叫出小幫手\n直接輸入可以查詢單字\n中英文皆可"
-        elif language == "chinese" or language == "english":
-            reply_text = search_word(text.lower(),language)
         else:
-            reply_text = "亂碼，請重新輸入"
+            reply_text = search_word(text.lower(),language)
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
     

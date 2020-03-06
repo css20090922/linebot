@@ -3,7 +3,7 @@ import sys
 import gspread
 import re
 import datetime
-
+import responses
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
@@ -12,7 +12,7 @@ from linebot.models import *
 from SheetMgr import search_word,add_word,get_word
 from utils import send_text_message
 from oauth2client.service_account import ServiceAccountCredentials
-from requests import *
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -37,10 +37,11 @@ line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 handler = WebhookHandler(channel_secret)
 #圖文選單
+rich_menu_id = 'richmenu-0000000000'
 img_path="richmenu_1583498398759.jpg"
 content_type = "image/jpeg"
 rich_menu_to_create = RichMenu(
-    size=RichMenuSize(width=2500, height=843),
+    size=RichMenuSize(width=843, height=843),
     selected=False,
     name="小幫手",
     chat_bar_text="Tap here",
@@ -53,9 +54,18 @@ with open(img_path, 'rb') as f:
     line_bot_api.set_rich_menu_image(richmenu_id, content_type, f)
 line_bot_api.set_default_rich_menu(richmenu_id)
 
+@responses.activate
+def test_create_rich_menu():
+    responses.add(
+        responses.POST,
+        LineBotApi.DEFAULT_API_ENDPOINT + '/v2/bot/richmenu',
+        json={"richMenuId": richmenu_id}, status=200
+    )
+    rich_menu = rich_menu_to_create 
 
-
-
+    result = parser.create_rich_menu(rich_menu)
+    request = responses.calls[0].request
+    
 
 
 # 監聽所有來自 /callback 的 Post Request

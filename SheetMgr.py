@@ -36,7 +36,7 @@ def add_word (voc ,chi) :
     voc = voc.strip()
     res = search_word(voc,"english")
     
-    if(res == "查無此字") :
+    if(res == "no result") :
         vlist = worksheet.get_all_values()
         last_row = len(vlist)+1
         print("add {} at {}",voc,last_row)

@@ -124,7 +124,7 @@ def handle_message(event):
             reply_text = ""
             print(text.lower())
             res = search_word(text.lower(),language)
-            if len(res)!=1
+            if len(res)!=1:
                 reply_text = "；".join(res)
             else:
                 reply_text =res

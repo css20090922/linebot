@@ -55,19 +55,6 @@ with open(img_path, 'rb') as f:
     
 line_bot_api.set_default_rich_menu(richmenu_id)
 
-# @responses.activate
-# def test_create_rich_menu():
-#     responses.add(
-#         responses.POST,
-#         LineBotApi.DEFAULT_API_ENDPOINT + '/v2/bot/richmenu',
-#         json={"richMenuId": richmenu_id}, status=200
-#     )
-#     rich_menu = rich_menu_to_create 
-
-#     result = parser.create_rich_menu(rich_menu)
-#     request = responses.calls[0].request
-    
-
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -137,7 +124,8 @@ def handle_message(event):
             reply_text = None
             print(text.lower())
             res = search_word(text.lower(),language)
-            reply_text = ';'.join(res)
+            if len(res)>1:
+                reply_text = ';'.join(res)
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
     

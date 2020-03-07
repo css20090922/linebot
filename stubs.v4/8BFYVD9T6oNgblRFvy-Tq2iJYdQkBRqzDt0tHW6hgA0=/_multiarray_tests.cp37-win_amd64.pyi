@@ -51,6 +51,9 @@ def format_float_OSprintf_g(val, precision):
     'format_float_OSprintf_g(val, precision)\n\n    Print a floating point scalar using the system\'s printf function,\n    equivalent to:\n\n        printf("%.*g", precision, val);\n\n    for half/float/double, or replacing \'g\' by \'Lg\' for longdouble. This\n    method is designed to help cross-validate the format_float_* methods.\n\n    Parameters\n    ----------\n    val : python float or numpy floating scalar\n        Value to format.\n\n    precision : non-negative integer, optional\n        Precision given to printf.\n\n    Returns\n    -------\n    rep : string\n        The string representation of the floating point value\n\n    See Also\n    --------\n    format_float_scientific\n    format_float_positional'
     pass
 
+def fromstring_null_term_c_api():
+    pass
+
 def get_buffer_info():
     pass
 
@@ -122,6 +125,12 @@ def npy_log10f():
     pass
 
 def npy_log10l():
+    pass
+
+def npy_pyarrayas1d_deprecation():
+    pass
+
+def npy_pyarrayas2d_deprecation():
     pass
 
 def npy_resolve():

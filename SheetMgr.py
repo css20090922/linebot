@@ -27,7 +27,7 @@ def search_word(word,language ):
         else :
             return worksheet.cell(row, 1).value
     except  gspread.exceptions.CellNotFound as gs :
-        print "no result"
+        print ("no result")
         return ("no result")
         raise gs
 

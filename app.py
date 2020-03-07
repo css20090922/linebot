@@ -121,7 +121,7 @@ def handle_message(event):
         elif text == "怎麼用" :
             reply_text = "輸入\"小幫手\"可以叫出小幫手\n直接輸入可以查詢單字\n中英文皆可"
         else:
-            reply_text = None
+            reply_text = ""
             print(text.lower())
             res = search_word(text.lower(),language)
             for reply in range(len(res)):

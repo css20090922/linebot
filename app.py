@@ -124,7 +124,7 @@ def handle_message(event):
             reply_text = None
             print(text.lower())
             res = search_word(text.lower(),language)
-            if len(res)>1:
+            if reply_text!="查無此字":
                 reply_text = ';'.join(res)
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)

@@ -125,7 +125,10 @@ def handle_message(event):
             print(text.lower())
             res = search_word(text.lower(),language)
             for reply in range(len(res)):
-                reply_text = reply_text + " " + res[reply]
+                if res[reply] == " ":
+                    reply_text +=  "；" 
+                else:
+                    reply_text +=  res[reply]
             
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)

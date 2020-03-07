@@ -39,7 +39,7 @@ def add_word (voc ,chi) :
     if(res == "no result") :
         vlist = worksheet.get_all_values()
         last_row = len(vlist)+1
-        print("add {0} at {1}",voc,last_row)
+        print("add {0} at {1}".format(voc,last_row))
         worksheet.update_cell(last_row, 1, voc)
         for i in range(len(chi)):
             worksheet.update_cell(last_row, 2+i, chi[i])

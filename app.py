@@ -125,7 +125,7 @@ def handle_message(event):
             print(text.lower())
             res = search_word(text.lower(),language)
             if not reply_text:
-                reply_text = ';'.join(res)
+                reply_text = ';'.join(res) 
             else:
                 reply_text = "查無此字"
     message = TextSendMessage(reply_text)

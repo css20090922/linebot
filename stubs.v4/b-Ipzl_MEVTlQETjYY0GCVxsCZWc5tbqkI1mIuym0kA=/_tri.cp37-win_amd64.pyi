@@ -1,10 +1,10 @@
 import builtins as _mod_builtins
 
 class TrapezoidMapTriFinder(_mod_builtins.object):
-    'TrapezoidMapTriFinder(triangulation)\n\nCreate a new C++ TrapezoidMapTriFinder object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.TrapezoidMapTriFinder instead.\n'
+    'Create a new C++ TrapezoidMapTriFinder object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.TrapezoidMapTriFinder instead.\n'
     __class__ = TrapezoidMapTriFinder
-    def __init__(self, triangulation):
-        'TrapezoidMapTriFinder(triangulation)\n\nCreate a new C++ TrapezoidMapTriFinder object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.TrapezoidMapTriFinder instead.\n'
+    def __init__(self, *args, **kwargs):
+        'Create a new C++ TrapezoidMapTriFinder object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.TrapezoidMapTriFinder instead.\n'
         pass
     
     @classmethod
@@ -35,10 +35,10 @@ class TrapezoidMapTriFinder(_mod_builtins.object):
     
 
 class TriContourGenerator(_mod_builtins.object):
-    'TriContourGenerator(triangulation, z)\n\nCreate a new C++ TriContourGenerator object\nThis should not be called directly, instead use the functions\nmatplotlib.axes.tricontour and tricontourf instead.\n'
+    'Create a new C++ TriContourGenerator object\nThis should not be called directly, instead use the functions\nmatplotlib.axes.tricontour and tricontourf instead.\n'
     __class__ = TriContourGenerator
-    def __init__(self, triangulation, z):
-        'TriContourGenerator(triangulation, z)\n\nCreate a new C++ TriContourGenerator object\nThis should not be called directly, instead use the functions\nmatplotlib.axes.tricontour and tricontourf instead.\n'
+    def __init__(self, *args, **kwargs):
+        'Create a new C++ TriContourGenerator object\nThis should not be called directly, instead use the functions\nmatplotlib.axes.tricontour and tricontourf instead.\n'
         pass
     
     @classmethod
@@ -61,10 +61,10 @@ class TriContourGenerator(_mod_builtins.object):
     
 
 class Triangulation(_mod_builtins.object):
-    'Triangulation(x, y, triangles, mask, edges, neighbors)\n\nCreate a new C++ Triangulation object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.Triangulation instead.\n'
+    'Create a new C++ Triangulation object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.Triangulation instead.\n'
     __class__ = Triangulation
-    def __init__(self, x, y, triangles, mask, edges, neighbors):
-        'Triangulation(x, y, triangles, mask, edges, neighbors)\n\nCreate a new C++ Triangulation object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.Triangulation instead.\n'
+    def __init__(self, *args, **kwargs):
+        'Create a new C++ Triangulation object\nThis should not be called directly, instead use the python class\nmatplotlib.tri.Triangulation instead.\n'
         pass
     
     @classmethod
@@ -78,19 +78,19 @@ class Triangulation(_mod_builtins.object):
         return False
     
     def calculate_plane_coefficients(self, z, plane_coefficients):
-        'calculate_plane_coefficients(z, plane_coefficients)\n\nCalculate plane equation coefficients for all unmasked triangles'
+        'Calculate plane equation coefficients for all unmasked triangles'
         pass
     
     def get_edges(self):
-        'get_edges()\n\nReturn edges array'
+        'Return edges array'
         pass
     
     def get_neighbors(self):
-        'get_neighbors()\n\nReturn neighbors array'
+        'Return neighbors array'
         pass
     
     def set_mask(self, mask):
-        'set_mask(mask)\n\nSet or clear the mask array.'
+        'Set or clear the mask array.'
         pass
     
 

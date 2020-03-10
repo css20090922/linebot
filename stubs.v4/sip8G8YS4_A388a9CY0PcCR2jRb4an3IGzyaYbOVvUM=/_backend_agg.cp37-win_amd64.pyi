@@ -15,9 +15,6 @@ class RendererAgg(_mod_builtins.object):
         'Abstract classes can override this to customize issubclass().\n\nThis is invoked early on by abc.ABCMeta.__subclasscheck__().\nIt should return True, False or NotImplemented.  If it returns\nNotImplemented, the normal algorithm is used.  Otherwise, it\noverrides the normal algorithm (and the outcome is cached).\n'
         return False
     
-    def buffer_rgba(self):
-        pass
-    
     def clear(self):
         pass
     

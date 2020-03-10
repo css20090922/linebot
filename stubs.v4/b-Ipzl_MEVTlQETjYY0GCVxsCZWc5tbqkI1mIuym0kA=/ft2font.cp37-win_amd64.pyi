@@ -75,7 +75,7 @@ class FT2Font(_mod_builtins.object):
         pass
     
     def get_glyph_name(self, index):
-        'get_glyph_name(index)\n\nRetrieves the ASCII name of a given glyph in a face.\n'
+        "get_glyph_name(index)\n\nRetrieves the ASCII name of a given glyph in a face.\n\nDue to Matplotlib's internal design, for fonts that do not contain glyph \nnames (per FT_FACE_FLAG_GLYPH_NAMES), this returns a made-up name which \ndoes *not* roundtrip through `.get_name_index`.\n"
         pass
     
     def get_image(self):
@@ -215,15 +215,15 @@ class FT2Image(_mod_builtins.object):
         return False
     
     def as_array(self):
-        'x = image.as_array()\n\nReturn the image buffer as a width x height numpy array of ubyte \n\n'
+        'x = image.as_array()\n\n[*Deprecated*]\nReturn the image buffer as a width x height numpy array of ubyte \n\n'
         pass
     
     def as_rgba_str(self):
-        's = image.as_rgba_str()\n\nReturn the image buffer as a RGBA string\n\n'
+        's = image.as_rgba_str()\n\n[*Deprecated*]\nReturn the image buffer as a RGBA string\n\n'
         pass
     
     def as_str(self):
-        's = image.as_str()\n\nReturn the image buffer as a string\n\n'
+        's = image.as_str()\n\n[*Deprecated*]\nReturn the image buffer as a string\n\n'
         pass
     
     def draw_rect(self, x0, y0, x1, y1):
@@ -275,6 +275,6 @@ VERTICAL = 32
 __doc__ = None
 __file__ = 'c:\\users\\twedw\\anaconda3\\lib\\site-packages\\matplotlib\\ft2font.cp37-win_amd64.pyd'
 __freetype_build_type__ = 'system'
-__freetype_version__ = '2.9.1'
+__freetype_version__ = '2.10.1'
 __name__ = 'matplotlib.ft2font'
 __package__ = 'matplotlib'

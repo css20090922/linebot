@@ -4,5 +4,7 @@
 	小測驗
 	中查英
 	英查中
+	https://lin.ee/mOd1fB
+	<img src="694bwzec.png">
 	
 	

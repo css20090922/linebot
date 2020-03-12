@@ -36,8 +36,8 @@ if channel_access_token is None:
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 handler = WebhookHandler(channel_secret)
-#圖文選單
 
+#圖文選單
 img_path="richmenu_1583498398759.jpg"
 content_type = "image/jpeg"
 rich_menu_to_create = RichMenu(
@@ -47,7 +47,11 @@ rich_menu_to_create = RichMenu(
     chat_bar_text="Tap here",
     areas=[RichMenuArea(
         bounds=RichMenuBounds(x=1650, y=0, width=843, height=843),
-        action=PostbackAction(label='新增單字', data='addvoc'))]
+        action=PostbackAction(label='新增單字', data='addvoc')),
+        RichMenuArea(
+        bounds=RichMenuBounds(x=800, y=0, width=843, height=843),
+        action=PostbackAction(label='每日一字', data='word'))]
+    
 )
 richmenu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
 with open(img_path, 'rb') as f:

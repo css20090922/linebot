@@ -23,7 +23,10 @@ def search_word(word,language ):
         col = cell.col
         if(language =="english") :
             print( worksheet.row_values(row)[1:])
-            return worksheet.row_values(row)[1:]
+
+            res = {"length":len(worksheet.row_values(row)[1:])-1}
+            res.extend = worksheet.row_values(row)[1:]
+            return res
         else :
             return worksheet.cell(row, 1).value
     except  gspread.exceptions.CellNotFound as gs :

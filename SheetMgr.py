@@ -25,7 +25,7 @@ def search_word(word,language ):
             print( worksheet.row_values(row)[1:])
 
             res = [len(worksheet.row_values(row)[1:])-1]
-            res.extend = worksheet.row_values(row)[1:]
+            res.extend(worksheet.row_values(row)[1:])
             return res
         else :
             return worksheet.cell(row, 1).value

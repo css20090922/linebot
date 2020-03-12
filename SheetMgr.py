@@ -24,7 +24,7 @@ def search_word(word,language ):
         if(language =="english") :
             print( worksheet.row_values(row)[1:])
 
-            res = {"length":len(worksheet.row_values(row)[1:])-1}
+            res = [len(worksheet.row_values(row)[1:])-1]
             res.extend = worksheet.row_values(row)[1:]
             return res
         else :

@@ -128,7 +128,7 @@ def handle_message(event):
                 for text in res :
                     reply_text += text
                     reply_text += ";"
-                reply_text = text [:-1]
+                reply_text = reply_text[:-1]
             else:
                 reply_text = res
                     

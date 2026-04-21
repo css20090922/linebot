@@ -1,5 +1,5 @@
 line-bot-sdk
-python-dotenv==0.10.3
+python-dotenv==1.2.2
 gspread
 oauth2client
 flask
